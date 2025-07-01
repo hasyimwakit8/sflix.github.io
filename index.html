@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SFlix - Watch Action Movies & TV Series Online Free in HD</title>
+  <meta name="description" content="SFlix: Stream the latest action movies & TV series in HD for free. Fast, safe, no registration. Explore trending action titles and search your favorites now!">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="sflix, watch movies online, free streaming, action movies, HD movies, TV series, latest movies, movie streaming, no ads, subtitles">
+  <link rel="canonical" href="https://sflix.github.io">
+  <link rel="icon" href="https://umin.pages.dev/umin.png" type="image/png">
+  <link rel="apple-touch-icon" href="https://umin.pages.dev/umin.png">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="SFlix - Watch Action Movies & TV Series Online Free in HD">
+  <meta property="og:description" content="SFlix: Stream the latest action movies & TV series in HD for free. Fast, safe, no registration. Explore trending action titles and search your favorites now!">
+  <meta property="og:image" content="https://umin.pages.dev/umin.png">
+  <meta property="og:url" content="https://sflix.github.io">
+  <meta property="og:type" content="website">
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SFlix",
+      "url": "https://sflix.github.io",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://sflix.github.io/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f2027, #2c5364 70%, #ff6e7f 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 24px 5vw 12px 5vw;
+      background: rgba(0,0,0,0.7);
+      border-bottom: 2px solid #ff6e7f;
+    }
+    header img {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      margin-right: 18px;
+      box-shadow: 0 2px 8px #ff6e7f80;
+    }
+    header h1 {
+      font-size: 2.6rem;
+      background: linear-gradient(90deg, #ff6e7f, #bfe9ff, #f9d423, #43cea2, #ff6e7f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+    .search-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 32px 0 18px 0;
+    }
+    .search-area input {
+      width: 340px;
+      padding: 14px 18px;
+      border-radius: 30px 0 0 30px;
+      border: none;
+      font-size: 1.15rem;
+      outline: none;
+      background: #fff;
+      color: #222;
+    }
+    .search-area button {
+      padding: 14px 28px;
+      border-radius: 0 30px 30px 0;
+      border: none;
+      background: linear-gradient(90deg, #ff6e7f, #bfe9ff);
+      color: #222;
+      font-size: 1.15rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .search-area button:hover {
+      background: linear-gradient(90deg, #f9d423, #43cea2);
+      color: #fff;
+    }
+    .category-section {
+      max-width: 1200px;
+      margin: 0 auto 32px auto;
+      padding: 0 5vw;
+    }
+    .category-title {
+      font-size: 2rem;
+      margin: 36px 0 18px 0;
+      font-weight: 800;
+      background: linear-gradient(90deg, #f9d423, #43cea2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+    .movie-grid, .tv-grid, .search-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px 18px;
+      margin-bottom: 28px;
+    }
+    .movie-card, .tv-card, .search-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 14px #ff6e7f40;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+    .movie-card:hover, .tv-card:hover, .search-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 6px 24px #43cea2cc;
+    }
+    .movie-card img, .tv-card img, .search-card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      border-bottom: 3px solid #43cea2;
+    }
+    .movie-card h3, .tv-card h3, .search-card h3 {
+      font-size: 1.1rem;
+      margin: 10px 0 4px 0;
+      color: #fff;
+      text-align: center;
+      min-height: 50px;
+    }
+    .movie-card .year, .tv-card .year, .search-card .year {
+      color: #bfe9ff;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+    .movie-card .play-btn, .tv-card .play-btn, .search-card .play-btn {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 7px 16px;
+      border-radius: 22px;
+      background: linear-gradient(90deg, #f9d423, #43cea2);
+      color: #222;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .movie-card .play-btn:hover, .tv-card .play-btn:hover, .search-card .play-btn:hover {
+      background: linear-gradient(90deg, #ff6e7f, #bfe9ff);
+      color: #fff;
+    }
+    main {
+      background: rgba(0,0,0,0.5);
+      padding: 32px 5vw 24px 5vw;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 24px;
+      box-shadow: 0 4px 32px #00000030;
+    }
+    main h2 {
+      font-size: 2.1rem;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #bfe9ff, #ff6e7f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    main p, main ul, main li {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: #fff;
+    }
+    main ul {
+      margin-left: 20px;
+    }
+    .footer {
+      background: linear-gradient(90deg, #2c5364, #0f2027);
+      color: #fff;
+      text-align: center;
+      padding: 32px 5vw 24px 5vw;
+      margin-top: 48px;
+      border-top: 4px solid #ff6e7f;
+      font-size: 1.1rem;
+      border-radius: 24px 24px 0 0;
+      box-shadow: 0 -2px 24px #ff6e7f40;
+    }
+    .footer a {
+      color: #bfe9ff;
+      text-decoration: underline;
+      margin: 0 8px;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .category-title, main h2 { font-size: 1.2rem; }
+      .movie-card img, .tv-card img, .search-card img { height: 170px; }
+      .search-area input { width: 60vw; }
+    }
+  </style>
+  <!-- Histats.com  START  (aync)-->
+  <script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4926025,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4926025&101" alt="" border="0"></a></noscript>
+<!-- Histats.com  END  -->
+</head>
+<body>
+  <header>
+    <img src="https://umin.pages.dev/umin.png" alt="SFlix Logo">
+    <h1>SFlix - Action Movies & TV Series Streaming</h1>
+  </header>
+
+  <!-- Ad code -->
+  <center>
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '4475681ea72ef1ba73f46e67ce13309a',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//apprenticelandfallenough.com/4475681ea72ef1ba73f46e67ce13309a/invoke.js"></script>
+  </center>
+
+  <div class="search-area">
+    <input type="text" id="searchInput" placeholder="Search movies, TV series...">
+    <button onclick="searchTMDB()">Search</button>
+  </div>
+  <div class="category-section">
+    <div id="searchResults" class="search-grid"></div>
+    <h2 class="category-title">🔥 Top 12 Action Movies</h2>
+    <div id="movieList" class="movie-grid"></div>
+    <h2 class="category-title">🎬 Top 12 Action TV Series</h2>
+    <div id="tvList" class="tv-grid"></div>
+  </div>
+
+  <main>
+    <h2>Welcome to SFlix: Your Ultimate Action Streaming Destination</h2>
+    <p>
+      <strong>SFlix</strong> is your go-to platform for streaming the latest and most popular action movies and TV series online, absolutely free and in stunning HD quality. Designed for movie lovers and action enthusiasts, SFlix brings you a seamless, ad-free streaming experience with no registration required. Whether you crave explosive blockbusters, thrilling TV shows, or hidden gems, SFlix has it all at your fingertips.
+    </p>
+    <h3>Why Choose SFlix?</h3>
+    <ul>
+      <li><strong>Vast Library:</strong> Thousands of action movies and TV series, updated daily with the newest releases and trending titles.</li>
+      <li><strong>HD Quality:</strong> Enjoy crisp 720p and 1080p streaming with adjustable resolution for any device.</li>
+      <li><strong>Safe & Private:</strong> No registration, no personal data required, and no intrusive ads or pop-ups.</li>
+      <li><strong>Multi-Subtitle Support:</strong> Watch with subtitles in multiple languages for a global audience.</li>
+      <li><strong>Lightning Fast:</strong> Instant loading and smooth playback, optimized for both desktop and mobile.</li>
+      <li><strong>Chromecast Ready:</strong> Effortlessly cast your favorite titles to your big screen.</li>
+      <li><strong>Constant Updates:</strong> Stay ahead with fresh content, trending action movies, and the latest TV episodes.</li>
+      <li><strong>Top-Notch Support:</strong> Friendly customer service and a growing community of movie fans.</li>
+    </ul>
+    <h3>What Makes SFlix Stand Out?</h3>
+    <p>
+      SFlix is more than just a streaming site. We are committed to providing a premium, user-friendly experience for action fans worldwide. Our intuitive interface makes it easy to browse, search, and discover new favorites. With no annoying ads or registration barriers, you can start watching instantly. Our platform is optimized for speed, security, and accessibility, making SFlix the preferred choice for action entertainment online.
+    </p>
+    <h3>How to Use SFlix</h3>
+    <ol>
+      <li><strong>Browse:</strong> Explore our curated lists of trending action movies and TV series above.</li>
+      <li><strong>Search:</strong> Use the search bar to find your favorite titles, actors, or genres.</li>
+      <li><strong>Stream:</strong> Click "Play Now" to watch instantly in your browser, with no downloads or sign-ups.</li>
+      <li><strong>Enjoy:</strong> Sit back and experience high-octane entertainment, anytime, anywhere.</li>
+    </ol>
+    <h3>Top Features of SFlix</h3>
+    <ul>
+      <li><strong>Free Streaming:</strong> No subscription fees, ever. Watch as much as you want, whenever you want.</li>
+      <li><strong>Mobile-Friendly:</strong> Fully responsive design for phones, tablets, and desktops.</li>
+      <li><strong>Multi-Device Access:</strong> Start on one device, continue on another without losing your place.</li>
+      <li><strong>Personalized Recommendations:</strong> Discover new action-packed content based on your viewing habits.</li>
+      <li><strong>Secure & Anonymous:</strong> Your privacy is our priority. We never ask for personal information.</li>
+    </ul>
+    <h3>Popular Action Subgenres on SFlix</h3>
+    <ul>
+      <li><strong>Superhero Action</strong> – Marvel, DC, and more</li>
+      <li><strong>Martial Arts</strong> – Kung Fu, Karate, classic and modern</li>
+      <li><strong>Military & War</strong> – Epic battles, modern warfare</li>
+      <li><strong>Crime & Heist</strong> – High-stakes robberies, police chases</li>
+      <li><strong>Adventure Action</strong> – Treasure hunts, survival, and more</li>
+      <li><strong>Spy & Espionage</strong> – Secret agents, covert missions</li>
+      <li><strong>Disaster & Survival</strong> – Natural disasters, apocalyptic scenarios</li>
+      <li><strong>Science Fiction Action</strong> – Futuristic battles, alien invasions</li>
+    </ul>
+    <h3>Frequently Asked Questions (FAQ)</h3>
+    <ul>
+      <li><strong>Is SFlix really free?</strong><br>
+        Yes! SFlix offers 100% free streaming with no hidden fees or subscriptions required.
+      </li>
+      <li><strong>Do I need to register?</strong><br>
+        No registration or sign-up is needed. Just browse, click, and watch.
+      </li>
+      <li><strong>Are there ads?</strong><br>
+        SFlix is designed to be as ad-free as possible, providing a seamless viewing experience.
+      </li>
+      <li><strong>Is SFlix safe?</strong><br>
+        Absolutely. We prioritize user privacy and security. No personal data is collected or shared.
+      </li>
+      <li><strong>Can I watch on my phone or tablet?</strong><br>
+        Yes, SFlix is fully optimized for all devices, including smartphones and tablets.
+      </li>
+      <li><strong>How often is content updated?</strong><br>
+        New movies and TV episodes are added daily, ensuring you never miss the latest releases.
+      </li>
+      <li><strong>What if my favorite title is missing?</strong><br>
+        Use the search bar to find your title, or contact us to request new content.
+      </li>
+    </ul>
+    <h3>Related Keywords</h3>
+    <ul>
+      <li>SFlix</li>
+      <li>Action movies online</li>
+      <li>Watch free movies</li>
+      <li>HD streaming</li>
+      <li>No ads streaming</li>
+      <li>TV series online</li>
+      <li>Latest movies 2025</li>
+      <li>Subtitled movies</li>
+      <li>Movie streaming site</li>
+      <li>Free action TV shows</li>
+    </ul>
+    <h3>Start Watching Now!</h3>
+    <p>
+      Ready for non-stop action? Use the search bar above or explore our curated lists to dive into the world of SFlix. Experience the thrill of the latest blockbusters, binge-worthy TV series, and timeless classics—all in one place, all for free. SFlix is your ticket to the best action entertainment online.
+    </p>
+    <h3>Disclaimer</h3>
+    <p>
+      SFlix does not host any content on its servers. All media is provided by third-party sources for streaming purposes only.
+    </p>
+  </main>
+
+  <div class="footer">
+    <p>
+      &copy; 2025 SFlix. All rights reserved. | <a href="https://sflix.github.io" target="_blank">Official Website</a> | Designed with ❤️ for movie lovers.
+    </p>
+    <p>
+      <img src="https://umin.pages.dev/umin.png" alt="SFlix Logo" width="32" style="vertical-align:middle;border-radius:8px;">
+    </p>
+  </div>
+
+  <script>
+    // Fetch 12 Action Movies
+    fetch('https://api.themoviedb.org/3/discover/movie?api_key=e0b203e42e12587b6ce507b8aa452e8c&with_genres=28&sort_by=popularity.desc&language=en-US&page=1')
+      .then(res => res.json())
+      .then(data => {
+        const movieList = document.getElementById('movieList');
+        movieList.innerHTML = '';
+        data.results.slice(0,12).forEach(item => {
+          movieList.innerHTML += `
+            <div class="movie-card">
+              <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="${item.title}">
+              <h3>${item.title}</h3>
+              <div class="year">${item.release_date ? item.release_date.substring(0,4) : ''}</div>
+              <a class="play-btn" href="https://sflix.github.io/player.html?id=${item.id}" target="_blank">Play Now</a>
+            </div>
+          `;
+        });
+      });
+
+    // Fetch 12 Action TV Series
+    fetch('https://api.themoviedb.org/3/discover/tv?api_key=e0b203e42e12587b6ce507b8aa452e8c&with_genres=10759&sort_by=popularity.desc&language=en-US&page=1')
+      .then(res => res.json())
+      .then(data => {
+        const tvList = document.getElementById('tvList');
+        tvList.innerHTML = '';
+        data.results.slice(0,12).forEach(item => {
+          tvList.innerHTML += `
+            <div class="tv-card">
+              <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="${item.name}">
+              <h3>${item.name}</h3>
+              <div class="year">${item.first_air_date ? item.first_air_date.substring(0,4) : ''}</div>
+              <a class="play-btn" href="https://sflix.github.io/player.html?tv=${item.id}" target="_blank">Play Now</a>
+            </div>
+          `;
+        });
+      });
+
+    // Search Functionality
+    function searchTMDB() {
+      const query = document.getElementById('searchInput').value.trim();
+      if (!query) return;
+      const userLang = navigator.language || 'en-US';
+      const url = `https://tmdb.cdnweb.info/get.php?url=search/multi&lang=${userLang}&query=${encodeURIComponent(query)}`;
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const results = data.results || [];
+          const searchResults = document.getElementById('searchResults');
+          searchResults.innerHTML = '';
+          if (results.length === 0) {
+            searchResults.innerHTML = '<div style="color:#ff6e7f;font-weight:bold;">No results found.</div>';
+            return;
+          }
+          results.slice(0,12).forEach(item => {
+            if (item.media_type === 'movie') {
+              searchResults.innerHTML += `
+                <div class="search-card">
+                  <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="${item.title}">
+                  <h3>${item.title}</h3>
+                  <div class="year">${item.release_date ? item.release_date.substring(0,4) : ''}</div>
+                  <a class="play-btn" href="https://sflix.github.io/player.html?id=${item.id}" target="_blank">Play Now</a>
+                </div>
+              `;
+            } else if (item.media_type === 'tv') {
+              searchResults.innerHTML += `
+                <div class="search-card">
+                  <img src="https://image.tmdb.org/t/p/w500${item.poster_path}" alt="${item.name}">
+                  <h3>${item.name}</h3>
+                  <div class="year">${item.first_air_date ? item.first_air_date.substring(0,4) : ''}</div>
+                  <a class="play-btn" href="https://sflix.github.io/player.html?tv=${item.id}" target="_blank">Play Now</a>
+                </div>
+              `;
+            }
+          });
+        });
+    }
+    document.getElementById('searchInput').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') searchTMDB();
+    });
+  </script>
+</body>
+</html>
